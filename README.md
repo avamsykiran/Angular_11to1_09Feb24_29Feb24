@@ -85,4 +85,198 @@ Angular
 
         NodeJS is used to execute the tools needed for developing the application.
 
+    Angular Archetecture
+    -------------------------------------------------------------------
+
+        Each angular artifact is a class.
+        Each of these classes are marked with decoraters to identify their roles.
+        These artifacts have config., Abnd the config,. is passed as json object to the decorator and is called meta-data.
+
+        Any angular app is made up of five main artifacts
+            Modules
+                @NgModule({
+                    declarations:[],
+                    imports:[],
+                    exports:[],
+                    providers:[],
+                    bootstrap:[]
+                })
+                class SalesModule{
+
+                }
+
+            Directives
+                @Directive({
+                    selector:'[fastMovingStock]'
+                })
+                class FastMovingStockDirective{
+
+                }
+
+            Components
+                @Component({
+                    selector:'app-dashboard',
+                    templateUrl:'',
+                    styleUrls:[]
+                })
+                class DashboardComponent{
+
+                }
+
+            Pipes
+                @Pipe({
+                    name:'intoWord'
+                })
+                class InToWordsPipe{
+
+                }
+
+            Services
+                @Injectable({
+                    providedIn:'root'
+                })
+                class OrdersService{
+
+                }
+
+
+    Angular CLI
+
+        Angular CLI is a frontier tool providd by angular team to mange the project structure and
+        project development phases like creating, building, executing, teting ...etc.,
+
+        ng version
+
+        ng new app-name
+
+        cd app-name
+
+            ng g module ModuleName
+            ng g c ComponentName    --skip-tests
+            ng g directive DirectiveName --skip-tests
+            ng g service ServiceName --skip-tests
+            ng g pipe PipeName --skip-tests
+            ng g interface InterfaceName
+            ng g class ClassName
+            ..etc.,
+
+            ng build                will compile .ts into .js , package and put them in 'dist' folder
+            ng serve                will build and hosts the package on development server on port 4200
+            ng serve --port 8888    will build and hosts the package on development server on port 8888
+            ng serve --port 8888 -o will build and hosts the package on development server on port 8888, launches the app on a browser
+            ng test                 will build and invoke all the test cases.
+
     
+    Angular Modules
+
+        Angular Modules define the scope of access. Each angular module can group components, pipes, directives,
+        service and other modules into them.
+
+        Artifacts belonging to a specfic moduel have access to one another, but they wont have access to artifacts
+        of other modules.
+
+        A module (moduleA) can be imported into another module (moduleB) so that moduelB artifacts can access exported artifacts of moduleA.
+
+        Each angular app must be mandatorily housed in one top-level module and is refered to as ROOT MODULE. AppModule is the default
+        name for ROOT MODULE.
+
+            @NgModule({
+                declarations:[],        list of components, pipes and directive that are grouped under this module
+                imports:[],             list of modules to be imported into this
+                exports:[],             list of artifacts of this module that are allowed tobe accessed out side
+                providers:[],           list of services that are manged by the injector of this module
+                bootstrap:[]            list of components to be instantiaed immidiatly after loading this module
+            })
+            class SalesModule{
+
+            }        
+
+        meta-data of ROOT MODULE will not have 'exports' section
+        meta-data of ROOT MODULE only has the 'bootstrap' section 
+
+    Angular Directive and Components
+
+        Angular offers html extandability as a feature. It means that we can create our own html elements and attributes in angular.
+
+        Attribute Directive / Directive         are custom made attributes in angular
+
+            @Directive({
+                selector:'[fastMovingStock]'
+            })
+            class FastMovingStockDirective{
+
+            }
+
+            <div fastMovingStock="true">
+                <!-- detials of stock items -->
+            </div>
+
+        Structural Directives                   are attribute directive that can control the rendering of an element.
+
+            *ngIf
+            *ngFor
+            ngSwitch    *ngSwitchCase *ngSwtichDefault
+
+        Component Directive / Components        are custom made elements/tags in angular
+
+            Component   =   State & Behaviour           .component.ts
+                                +
+                            Html DOM Content            .component.html
+                                +
+                            Style                       .component.css
+
+
+            dashboard.component.ts
+
+                @Component({
+                    selector:'app-dashboard',
+                    templateUrl:'dashboard.component.html',
+                    styleUrls:['dashboard.component.css']
+                })
+                class DashboardComponent{
+                    
+                    numberOfMessgesRead:number = 12;
+                }
+
+            dashboard.component.html
+                <div class="dashboard">
+                    You have {{numberOfMessgesRead}} messages read already.
+                </div>
+
+            dashboard.component.css
+                .dashboard{
+                    margin: 10px;
+                    border: 1px solid black;
+                }
+
+            <app-dashboard></app-dashboard>
+
+    Data Binding
+
+        is about accessing the fields and the methods of component.ts file inside
+        the component.html
+
+        Interpolation
+            is to bind an angular field or expression onto the content directly. Whenever,
+            the field bound here has its valeu changed, the rendered content also gets
+            updated automatically.
+
+            <tagName> {{fieldOrAngularExpression}} </tagName>
+
+        Two-Way Data Binding
+            is to bind a field with an input-element, so that the input-element will show
+            the value of the field initially and whenever the input-element is edited, the
+            value of the field also is updated.
+
+            we have to use ngModel attribute-directive defined in 'FormsModule' from '@angular/forms' for
+            two-way binding.
+
+            <input type="text" [(ngModel)]="userName" />
+
+
+
+        One-Way Data Binding
+            Attribute Data Binding
+            Event Data Binding
+            Style Binding
+            CSS Class Binding
