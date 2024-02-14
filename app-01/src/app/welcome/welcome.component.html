@@ -1,0 +1,32 @@
+<section class="welcomeContent">
+    <h4>Hai <em>{{userName}}</em>! You are welcome.</h4>
+
+    <div>
+        <img [src]="banners[bIndex]" 
+            [style.width.px]="bWidth" 
+            (click)="toggleImg()" 
+            [class.centered]="cFlag"
+            [class.bordered]="bFlag" />
+    </div>
+
+    <form>
+        <div>
+            <label>User Name: </label>
+            <input type="text" name="t1" [(ngModel)]="userName" />
+        </div>
+        <div>
+            <label>Banner Width: <em>{{bWidth}} px</em></label>
+            <input type="range" name="t2" [(ngModel)]="bWidth" min="100" max="500" />
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="c1" [(ngModel)]="bFlag" /> Bordered
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" name="c2" [(ngModel)]="cFlag" /> Centered
+            </label>
+        </div>
+    </form>
+</section>

@@ -273,10 +273,58 @@ Angular
 
             <input type="text" [(ngModel)]="userName" />
 
-
-
         One-Way Data Binding
             Attribute Data Binding
-            Event Data Binding
+                is to bind a field with an attribute.
+
+                <tagName attribute="value"></tagName>
+                <tagName [attribute]="fieldOrAngularExpression"></tagName>
+
+                <img src="abcd" />      <!-- abcd itself is the image url -->
+                <img [src]="abcd" />    <!-- abcd is field that has the image url -->    
+
+            Event Binding
+                is to bind a method with an event.
+
+                <tagName (event-driective)="method()"></tagName>
+
+                html-event-attribute            event-directive
+                ------------------------------------------------------------------
+                    onSubmit                        ngSubmit
+                    onClick                         click
+                    onBlur                          blur
+                    onFocus                         focus
+                    onChange                        change
+                    .....etc.,
+
             Style Binding
+                is to bind a field with a css-property. 
+
+                <tagName [style.cssProperty]="field"></tagName>
+
+                field = {"css-property:angularExpression1,"css-property2":angularExpression2};
+                <tagName [ngStyle]="field"></tagName>
+                
             CSS Class Binding
+                is to control if a css class is applied on an element or not.
+
+                <tagName [class.className]="booleanExpression">
+                </tagName>
+
+                <tabName ngClass=" cssClass1 cssClass2 cssClass3 ">
+                </tagName>
+
+                myClasses: string = " cssClass1 cssClass2 cssClass3 ";
+                <tagName [ngClass]="myClasses">
+                </tagName>
+
+                myClasses: string[] = ["cssClass1","cssClass2","cssClass3"];
+                <tagName [ngClass]="myClasses">
+                </tagName>
+
+                myClasses= {cssClassName:true,cssClassName2:false};
+                <tagName [ngClass]="myClasses">
+                </tagName>
+
+
+
