@@ -326,5 +326,79 @@ Angular
                 <tagName [ngClass]="myClasses">
                 </tagName>
 
+            Custom Directive
 
+                <div fastMovingStock="true">
+                    <!-- detials of stock items -->
+                </div>
 
+                <p fastMovingStock="true">
+                    <!-- detials of stock items -->
+                </p>
+
+                @Directive({
+                    selector:'[fastMovingStock]'
+                })
+                class FastMovingStockDirective{
+                    //access the hostElement via ElementRef class
+                    //@HostListner decorator to respond to the event that happen on the host-element.
+                    //@Input decorator is sued to receive the data from a host-element in to attribute directive.
+                }    
+
+            Structural Directives
+
+                ngIf
+
+                    <ng-template [ngIf]="booleanExporession">
+                        <p>This is a test para</p>
+                    </ng-template>
+
+                    <p *ngIf="booleanExporession">This is a test para</p>
+
+                *ngFor
+
+                    <ng-template [ngFor]="let ele of anArrray;index as i">
+                        <p>{{ele}} is available at {{i}}</p>
+                    </ng-template>
+
+                    <p *ngFor="let ele of anArrray;index as i">{{ele}} is available at {{i}}</p>
+
+                ngSwitch    *ngSwitchCase   *ngSwitchDefault        
+
+                    <div [ngSwitch]="day">
+                        <span *ngSwitchCase="1">Monday</span>
+                        <span *ngSwitchCase="2">Tuesday</span>
+                        <span *ngSwitchCase="3">Wednesday</span>
+                        <span *ngSwitchCase="4">Thursday</span>
+                        <span *ngSwitchCase="5">Friday</span>
+                        <span *ngSwitchCase="6">Saturday</span>
+                        <span *ngSwitchCase="7">Sunday</span>
+                        <span *ngSwitchDefault>No Such Day</span>
+                    </div>
+
+    Angular Pipes
+
+        a pipe is used tranform a value into another jsut before rendering.
+
+            {{valueOrFieldOrExpression|pipeName:'pipeInputs'}}
+
+            in-built
+                lowercase
+                uppercase
+                titlecase
+                number
+                currency
+                date
+                ...etc.,
+
+            custome pipe
+
+                @Pipe({
+                    name:'intoWord'
+                })
+                class InToWordsPipe implements PipeTransform {
+                    transform(value:any):any {
+                        //here goes the trnaformation code..
+                        return transformedValue;
+                    }
+                }
