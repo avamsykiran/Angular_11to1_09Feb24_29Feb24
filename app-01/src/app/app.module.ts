@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ToggleColorDirective } from './directives/toggle-color.directive';
 import { DirectiveDemoComponent } from './directive-demo/directive-demo.component';
+import { PipesDemoComponent } from './pipes-demo/pipes-demo.component';
+import { InToWordsPipe } from './pipes/in-to-words.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     ToggleColorDirective,
-    DirectiveDemoComponent
+    DirectiveDemoComponent,
+    PipesDemoComponent,
+    InToWordsPipe
   ],
   imports: [
     BrowserModule,

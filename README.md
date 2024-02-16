@@ -391,7 +391,7 @@ Angular
                 date
                 ...etc.,
 
-            custome pipe
+            custom pipe
 
                 @Pipe({
                     name:'intoWord'
@@ -402,3 +402,15 @@ Angular
                         return transformedValue;
                     }
                 }
+
+    Angular Services
+
+        a service is a injectable object carring bussiness logic or api calls.
+
+    Assigment#1
+
+        pipe called 'capitals'
+
+        let stateName:string="Andhra Pradesh";
+
+        {{stateName|capitals}} ----------->   Hyderabad

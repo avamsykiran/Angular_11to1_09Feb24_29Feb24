@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FriendsService } from '../services/friends.service';
 
 @Component({
   selector: 'app-directive-demo',
@@ -11,17 +12,17 @@ export class DirectiveDemoComponent {
   friends:string[];
   friend!:string;
 
-  constructor(){
+  constructor(private fs:FriendsService){
     this.myColor="yellow";
-    this.friends=[];
+    this.friends=fs.getAll();
   }
 
   add(){
-    this.friends.push(this.friend);
+    this.friends=this.fs.add(this.friend);
     this.friend="";
   }
 
   remove(index:number){
-    this.friends.splice(index,1);
+    this.friends=this.fs.remove(index);
   }
 }
