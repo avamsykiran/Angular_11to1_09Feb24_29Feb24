@@ -1,0 +1,16 @@
+.welcomeContent{
+    background-color: #ffffff;
+    margin:10px;
+    padding:10px;
+    border: 1px solid #000000;
+}
+
+.centered{
+    display: block;
+    margin: auto;
+}
+
+.bordered{
+    border:2px solid #000000;
+    border-radius: 10px;
+}

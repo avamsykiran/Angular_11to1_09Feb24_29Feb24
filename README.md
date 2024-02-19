@@ -407,10 +407,57 @@ Angular
 
         a service is a injectable object carring bussiness logic or api calls.
 
-    Assigment#1
+    Integrating Angular With Bootstrap
 
-        pipe called 'capitals'
+        npm i bootstrap
 
-        let stateName:string="Andhra Pradesh";
+        include the paths 
+        node_modules/bootstrap/dist/css/bootstrap.min.css   in 'styles' section of angular.json
+        node_modules/bootstrap/dist/js/bootstrap.min.js     in 'scripts' section of angular.json
 
-        {{stateName|capitals}} ----------->   Hyderabad
+    Angular Routing
+        We can map urls one for each component and to laod one component at a time based on the url.
+
+        RouterModule from '@angular/router'
+
+            Routes              model       Route[]
+
+            Route               model       {path:'',pathMatch:'full|startsWith',component:Componnet,redirect:''}
+
+                                            For Example:
+                                                {path:'abc',component:DashboardComponent}
+
+                                                assuming port 8888
+
+                                                http://localhost:8888/abc
+                                                http://localhost:8888/abc/123
+                                                http://localhost:8888/abc/xyz
+                                                
+                                                will result in loading DashboardComponent                                            
+                                            
+                                            For Example:
+                                                {path:'abc',pathMatch:'full',component:DashboardComponent}
+
+                                                assuming port 8888
+
+                                                http://localhost:8888/abc
+                                                
+                                                will result in loading DashboardComponent
+
+                                                http://localhost:8888/abc/123
+                                                http://localhost:8888/abc/xyz
+                                                
+                                                will not work!
+
+            router-outlet       component   this is used in the top-level component to reserve space for the router output.
+
+            routerLink          directive   is used on 'a' tag instead of its 'href' attribute.
+
+            routerLinkActive    directive   accepts a css-class and that css-class is applied only when that link is active.
+
+            Router              service     navigateByUrl("/sales/dailyReport")
+                                            navigate(['/sales','/dailyReport'])
+
+            ActivatedRoute      service     used to extract data (like path parmeters/querystring..etc) from the current URL.
+
+            

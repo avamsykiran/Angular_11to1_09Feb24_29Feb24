@@ -1,0 +1,56 @@
+<section class="dirDemoContent">
+
+    <p appToggleColor="#ffffff">this is a para.</p>
+    <p [appToggleColor]="myColor">this is a para.</p>
+
+    <form>
+        <label> Color:
+            <input type="color" name="t1" [(ngModel)]="myColor" />
+        </label>
+    </form>
+
+    <!--
+    <p *ngIf="!friends || friends.length===0">
+        <strong>No Friends To Display</strong>
+    </p>
+
+    <div *ngIf="friends && friends.length>0">
+        <h4>Friends List</h4>
+        <ol>
+            <li *ngFor="let f of friends;index as i">
+                {{f}}
+                <button type="button" (click)="remove(i)">(X)</button>
+            </li>
+        </ol>
+    </div>
+    -->
+
+    <ng-container *ngIf="!friends || friends.length===0 then msg; else friendsList">
+    </ng-container>
+
+    <ng-template #msg>
+        <p>
+            <strong>No Friends To Display</strong>
+        </p>
+    </ng-template>
+
+    <ng-template #friendsList>
+        <div>
+            <h4>Friends List</h4>
+            <ol>
+                <li *ngFor="let f of friends;index as i">
+                    {{f}}
+                    <button type="button" (click)="remove(i)">(X)</button>
+                </li>
+            </ol>
+        </div>
+    </ng-template>
+
+    <form (ngSubmit)="add()">
+        <label> Friend Name:
+            <input type="text" name="t2" [(ngModel)]="friend" />
+        </label>
+        <button>ADD</button>
+    </form>
+
+</section>
