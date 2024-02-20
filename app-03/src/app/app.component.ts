@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-03';
+  
+  title:string;
+
+  constructor(){
+    this.title = "Address Book 1.0";
+  }
 }

@@ -460,4 +460,27 @@ Angular
 
             ActivatedRoute      service     used to extract data (like path parmeters/querystring..etc) from the current URL.
 
+    Angular Forms
+
+        Template Driven Form                        Model Driven Form
+            FormsModule from '@angular/forms'               ReactiveFormsModule from '@angular/forms'
+                ngForm                                                 FormGroup
+                ngModel                                                FormControl
+                                                                       formControlName
+
+            Validation are limited                          Has an extensive Validation Framework, and
+                                                            custom validators are simelessly supported
             
+            used in simple context where not more           used in all complex and nested form and regular 
+            than two input controls exist                   form senarios.
+
+            Testing is difficult as the form                Testing is easy as the form is modeled in the TS class
+            struture and behaviour are defined               and is only strucutred in the template
+            in the template
+
+                            Both ngForm and FormGroup support valid and invalid properties.
+
+                            Both ngModel and FormControl support
+                                                    touched and untouched
+                                                    dirty and prestine
+                                                    valid and invalid
