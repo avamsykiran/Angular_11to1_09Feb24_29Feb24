@@ -19,4 +19,10 @@ export class ContactsListComponent {
     this.contacts = this.cs.getAll();
   }
 
+  del(id:number){
+    if(window.confirm("Are you sure of deleting contact#"+id+"?")){
+      this.cs.deleteById(id);
+      this.refresh();
+    }
+  }
 }

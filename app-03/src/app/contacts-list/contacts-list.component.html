@@ -19,6 +19,7 @@
                     <th>Mobile</th>
                     <th>Mail Id</th>
                     <th>Date Of Birth</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,10 @@
                     <td>{{c.mobile}}</td>
                     <td>{{c.mailId}}</td>
                     <td>{{c.dateOfBirth|date:'dd-MMM-yyyy'}}</td>
+                    <td>
+                        <a [routerLink]="['/editContact',c.id]" class="btn btn-sm btn-primary me-1">EDIT</a>
+                        <button class="btn btn-sm btn-danger" (click)="del(c.id)">DELETE</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -484,3 +484,31 @@ Angular
                                                     touched and untouched
                                                     dirty and prestine
                                                     valid and invalid
+
+        InBuilt Validators:
+            Validators from '@angular/forms'
+                offers
+                        requried
+                        min
+                        max
+                        minLength
+                        maxLength
+                        email
+                        pattern
+
+        Custom Validators:
+
+            is any function that accepts an object of 'AbstractControl' and returns an object of ValidationErrors or null.
+
+            customValidator(control:AbstractControl) : ValidationErrors | null {
+                let isValid:boolean = true;
+
+                //validation logic.
+                    
+                return isValid ? null : {"validatorName":true };
+            }
+
+
+            
+
+
