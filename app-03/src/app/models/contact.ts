@@ -4,4 +4,5 @@ export interface Contact {
     mobile:string;
     mailId:string;
     dateOfBirth:Date;
+    group:string;
 }

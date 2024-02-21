@@ -19,6 +19,7 @@
                     <th>Mobile</th>
                     <th>Mail Id</th>
                     <th>Date Of Birth</th>
+                    <th>Group</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                     <td>{{c.fullName}}</td>
                     <td>{{c.mobile}}</td>
                     <td>{{c.mailId}}</td>
+                    <td>{{c.group}}</td>
                     <td>{{c.dateOfBirth|date:'dd-MMM-yyyy'}}</td>
                     <td>
                         <a [routerLink]="['/editContact',c.id]" class="btn btn-sm btn-primary me-1">EDIT</a>

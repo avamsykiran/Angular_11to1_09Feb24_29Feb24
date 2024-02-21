@@ -11,8 +11,8 @@ export class ContactService {
 
   constructor() { 
     this.contacts=[
-      {id:1,fullName:"Vamsy Kiran",mobile:"9052224753",mailId:"vamsy@gmail.com",dateOfBirth:new Date("1985-06-11")},
-      {id:2,fullName:"Sagar",mobile:"9052224751",mailId:"sagar@gmail.com",dateOfBirth:new Date("1987-04-02")}
+      {id:1,fullName:"Vamsy Kiran",mobile:"9052224753",mailId:"vamsy@gmail.com",dateOfBirth:new Date("1985-06-11"),group:"Family"},
+      {id:2,fullName:"Sagar",mobile:"9052224751",mailId:"sagar@gmail.com",dateOfBirth:new Date("1987-04-02"),group:"Family"}
     ];
     this.nextId=3;
   }

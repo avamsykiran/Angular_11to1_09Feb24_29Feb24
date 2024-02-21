@@ -15,6 +15,7 @@ export class ContactFormComponent {
   mobile: FormControl;
   mailId: FormControl;
   dateOfBirth: FormControl;
+  group:FormControl;
 
   contactForm: FormGroup;
 
@@ -27,13 +28,15 @@ export class ContactFormComponent {
     this.mobile = new FormControl("", [Validators.required, Validators.pattern("[1-9][0-9]{9}")]);
     this.mailId = new FormControl("", [Validators.required, Validators.email]);
     this.dateOfBirth = new FormControl("", [Validators.required,this.ageValidator(21)]);
+    this.group = new FormControl("", [Validators.required]);
 
     this.contactForm = new FormGroup({
       id: this.id,
       fullName: this.fullName,
       mobile: this.mobile,
       mailId: this.mailId,
-      dateOfBirth: this.dateOfBirth
+      dateOfBirth: this.dateOfBirth,
+      group:this.group
     })
 
     let cid = this.activatedRoute.snapshot.params["cid"];

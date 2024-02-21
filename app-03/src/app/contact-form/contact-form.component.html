@@ -1,7 +1,7 @@
 <section class="col-sm-3 mx-auto border border-primary p-2">
-    
+
     <h4>{{isEditing?"Edit":"New"}} Contact</h4>
-    
+
     <form (ngSubmit)="formSubmitted()" [formGroup]="contactForm">
         <div>
             <label>Contact Id</label>
@@ -35,13 +35,25 @@
         <div>
             <label>Date Of Birth</label>
             <input type="date" formControlName="dateOfBirth" class="form-control" />
-            <div class="alert alert-danger p-1" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
+            <div class="alert alert-danger p-1"
+                *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
                 <span *ngIf="dateOfBirth.errors!['required']">Date Of Birth is a mandatory field</span>
                 <span *ngIf="dateOfBirth.errors!['age']">Date Of Birth must be atleast 21 years old from today.</span>
             </div>
         </div>
+        <div>
+            <label>Group</label>
+            <select formControlName="group" class="form-control">
+                <option value="">--SELECT-</option>
+                <option *ngFor="let g of ['Family','Work','Friends']" [value]="g">{{g}}</option>
+            </select>
+            <div class="alert alert-danger p-1"
+                *ngIf="group.invalid && (group.touched || group.dirty)">
+                <span *ngIf="group.errors!['required']">Group is a mandatory field</span>
+            </div>
+        </div>
         <div class="d-grid mt-1">
-            <button class="btn btn-primary" [disabled]="contactForm.invalid" >SAVE CONTACT DETAILS</button>
+            <button class="btn btn-primary" [disabled]="contactForm.invalid">SAVE CONTACT DETAILS</button>
         </div>
     </form>
 </section>
