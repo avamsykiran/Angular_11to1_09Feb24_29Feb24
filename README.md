@@ -508,7 +508,68 @@ Angular
                 return isValid ? null : {"validatorName":true };
             }
 
+    Assignment#1
 
-            
+        Create an angular SPA that does CRUD operation on 
+        Employee
+            id
+            fullName
+            basicPay
+            dateOfJoining
+            designation     ASSOCIATE / Jr ASSOCIATE / Sr ASSOCIATE / MANAGER
 
+        Custome Validator to check that the dateOfJoining can not be a future date.
 
+    Obsservable from 'rxjs'.
+
+        Observable is an enchanced Promise.
+
+        A Promise can emit only one value that too after the completion of the async job.
+        An Observable cna emit any number of values while the async job is in progress.
+
+        A Promise has to be subscribed using 'then()' method for the async job to start and
+        only one subscription can happen.
+        An Observable has to be subscribed using 'subscribe()' method for the async job to start and
+        any number of subscriptions can happen.
+
+        A Promie once subscribed can not be unsbscribed.
+        An Observable can be unsubscribed using 'unsubscribe()' method.
+
+        let bgJob = (resolve,reject) => {
+            //resolve is used to signal completion and also to carry the end result.
+            //rejct signals error 
+        };
+
+        let p = new Promise( bgJob );
+
+        p.then(
+            val => {/*success callback*/ },
+            err => {/*error callback */}
+        );
+
+        let bgJob2 = observer => {
+            //observer.next(val)    used to emit intermidiate reuslts while the job is in progress
+            //observer.error(err)   used to signal error
+            //observer.complete()   used to signal completion
+        };
+
+        let ob = new Observable( bgJob2 );
+
+        ob.subscribe({
+            next: val => {},
+            error: err => {},
+            complete: () => {}
+        });
+
+        Observale class has a method called 'pipe()' used to pipe operations on an existing observable to
+        generate a new observable.
+
+        let ob2 = ob1.pipe( operation1(),operation2() );
+
+    Calling Rest-Api using HttpClient
+
+        HttpClient is a service from '@angular/common/http'
+            get(endPoint) : Observable
+            post(endPoint,reqBody) : Observable
+            put(endPoint,reqBody) : Observable
+            delete(endPoint) : Observable

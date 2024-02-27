@@ -1,0 +1,31 @@
+<form (ngSubmit)="formSubmitted()">
+    <div>
+        <label>Lower Bound</label>
+        <input type="number" name="op1" [(ngModel)]="lb" class="form-control"/>
+    </div>
+    <div>
+        <label>Upper Bound</label>
+        <input type="number" name="op2" [(ngModel)]="ub" class="form-control"/>
+    </div>
+    <div class="d-grid mt-1">
+        <label>
+            <input type="checkbox" name="c1" [(ngModel)]="isEven" /> Even Number
+        </label>
+    </div>
+    <div class="d-grid mt-1">
+        <label>
+            <input type="checkbox" name="c2" [(ngModel)]="isSquared" /> Squared Number
+        </label>
+    </div>
+    <div class="d-grid mt-1">
+        <button class="btn btn-primary" [disabled]="isJobActive">START SERIES</button>
+    </div>
+</form>
+
+<div class="alert alert-danger fw-bold p-2 mt-2" *ngIf="errMsg">
+    {{errMsg}}
+</div>
+
+<div class="alert alert-secondary fw-bold p-2 mt-2" *ngIf="results && results.length>0">
+    <span *ngFor="let n of results">{{n}} </span> 
+</div>
