@@ -568,8 +568,25 @@ Angular
 
     Calling Rest-Api using HttpClient
 
-        HttpClient is a service from '@angular/common/http'
+        HttpClient is a service from HttpClientModule from '@angular/common/http'
             get(endPoint) : Observable
             post(endPoint,reqBody) : Observable
             put(endPoint,reqBody) : Observable
             delete(endPoint) : Observable
+
+    Generating fake rest-api using json-server
+
+        md adb-api
+        cd adb-api
+        npm init -y
+        npm i json-server@0.17.4
+
+        create a json file containing hypothetical data in the adb-api folder
+            say adb-api/data.json
+
+        include the start command in pakcge.json as below
+            "start":"json-server --watch ./data.json --port 9999"
+
+        npm start
+
+    

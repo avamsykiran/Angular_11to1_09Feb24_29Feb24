@@ -1,0 +1,50 @@
+<section class="col-sm-10 mx-auto border border-primary p-2">
+    <h4>Contacts</h4>
+
+    <div class="alert p-2" *ngIf="!contacts && !errMsg">
+        <img src="assets/pw.gif" />
+    </div>
+
+    <div class="alert alert-danger p-4 fw-bold" *ngIf="errMsg">
+        {{errMsg}}
+    </div>
+
+    <ng-container *ngIf="contacts && contacts.length===0 then noContactsMsg; else contactsTable">
+    </ng-container>
+
+    <ng-template #noContactsMsg>
+        <div class="alert alert-info p-4 fw-bold">
+            No Contacts To display
+        </div>
+    </ng-template>
+
+    <ng-template #contactsTable>
+        <table class="table table-hovered table-border table-striped">
+            <thead>
+                <tr>
+                    <th>Contact#</th>
+                    <th>Full Name</th>
+                    <th>Mobile</th>
+                    <th>Mail Id</th>
+                    <th>Date Of Birth</th>
+                    <th>Group</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of contacts">
+                    <td>{{c.id}}</td>
+                    <td>{{c.fullName}}</td>
+                    <td>{{c.mobile}}</td>
+                    <td>{{c.mailId}}</td>
+                    <td>{{c.group}}</td>
+                    <td>{{c.dateOfBirth|date:'dd-MMM-yyyy'}}</td>
+                    <td>
+                        <a [routerLink]="['/editContact',c.id]" class="btn btn-sm btn-primary me-1">EDIT</a>
+                        <button class="btn btn-sm btn-danger" (click)="del(c.id)">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-template>
+</section>
