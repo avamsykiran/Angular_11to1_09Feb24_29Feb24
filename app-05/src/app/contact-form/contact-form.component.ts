@@ -21,6 +21,8 @@ export class ContactFormComponent {
 
   isEditing!:boolean;
 
+  errMsg!:string;
+
   constructor(private cs: ContactService, private router: Router,private activatedRoute:ActivatedRoute) {
 
     this.id = new FormControl(null);
@@ -38,25 +40,40 @@ export class ContactFormComponent {
       dateOfBirth: this.dateOfBirth,
       group:this.group
     })
+  }
 
+  ngOnInit(){
     let cid = this.activatedRoute.snapshot.params["cid"];
     if(cid){
       this.isEditing=true;
-      let c = this.cs.getById(Number(cid));
-      this.contactForm.reset({...c,dateOfBirth:c!.dateOfBirth.toISOString().substring(0,10)});
+      this.cs.getById(Number(cid)).subscribe({
+        next: c => this.contactForm.reset({...c,dateOfBirth:c!.dateOfBirth.toISOString().substring(0,10)}),
+        error: err => {
+          console.log(err);
+          this.errMsg="Unable to laod record to be edited! Please try again later!";
+        }
+      })
     }
   }
 
   formSubmitted() {
     let c = {...this.contactForm.value,dateOfBirth: new Date(this.contactForm.value.dateOfBirth)};
 
+    let ob=null;
+
     if(this.isEditing){
-      this.cs.update(c);
+      ob = this.cs.update(c);
     }else{
-      this.cs.add(c);
+      ob = this.cs.add(c);
     }
-    
-    this.router.navigateByUrl("/contacts");
+
+    ob.subscribe({
+      next: c => this.router.navigateByUrl("/contacts"),
+      error: err => {
+        console.log(err);
+        this.errMsg="Unable to save the record! Please try again later!";
+      }
+    });
   }
 
   ageValidator(ageLimit:number) : ValidatorFn {

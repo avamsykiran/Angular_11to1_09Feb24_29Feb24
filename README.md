@@ -29,10 +29,10 @@ Angular
     ---------------------------------------------------
         TypeScript = JavaScript + types
         Angular Introduction
-        Angular Components, directives pipes , moduels
+        Angular Components, directives, pipes , moduels
         Angular Forms
         RxJS - Observables
-        HttpCleint - restApi communication
+        HttpClient - restApi communication
         Angular Routing
 
     
@@ -589,4 +589,38 @@ Angular
 
         npm start
 
+    Content vs View
+
+        All the DOM written inside the tmeplate of a component is called its view (ViewChildren or ViewChild).
+
+        Anything written inside the <tagName></tagName> of a component is called its content (ContentChildren or ContentChild) .
+
+            <app-component-a>  here goes the content </app-component-a>
     
+    Angular Component or Directive Life Cycle Hooks
+
+        constructor()                   gets invoked after the allocation of the object
+
+        ngOnChanges(SimpelChanges)      gets invoked every time when the @Input() fields change 
+        
+        ngOnInit()                      gets invoked after the first render (only once)
+        
+        ngDoCheck()                     is used to detect and act upon changes that angular cannot
+                                        detect on its own. incoekd after ngOnInit() for the first
+                                        time and then after ngOnChanges().
+        
+            ngAfterContentInit()        gets invoked after the content is initialized
+        
+            ngAfterContentChecked()     gets invoked after the content is checked
+        
+            ngAfterViewInit()           gets invoked after the view is initialized
+        
+            ngAfterViewChecked()        gets invoked after the view is checked
+        
+        ngOnDestroy()                   gets invoked just before the Component is unloaded.
+
+    Content Projection
+
+        ng-content
+        ng-container
+        ng-template

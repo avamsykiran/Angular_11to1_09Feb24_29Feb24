@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NoSuchComponent } from './no-such/no-such.component';
+import { MsgBoxComponent } from './msg-box/msg-box.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NoSuchComponent } from './no-such/no-such.component';
     AppComponent,
     ContactsListComponent,
     ContactFormComponent,
-    NoSuchComponent
+    NoSuchComponent,
+    MsgBoxComponent
   ],
   imports: [
     BrowserModule,

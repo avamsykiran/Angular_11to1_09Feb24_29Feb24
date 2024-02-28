@@ -9,12 +9,12 @@
       "group": "FAMILY"
     },
     {
+      "id": 2,
       "fullName": "Sagar",
       "mobile": "9052224754",
       "mailId": "sagar@gmail.com",
-      "dateOfBirth": "1987-06-11",
-      "group": "FAMILY",
-      "id": 2
+      "dateOfBirth": "1977-06-11T00:00:00.000Z",
+      "group": "Family"
     }
   ]
 }
