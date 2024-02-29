@@ -1,0 +1,47 @@
+<section class="col-sm-10 mx-auto p-2">
+    <h4>Contacts</h4>
+
+    <div class="row border-bottom border-danger p-1 fw-bold text-center">
+        <div class="col-1">Contact#</div>
+        <div class="col">Full Name</div>
+        <div class="col-1">Mobile</div>
+        <div class="col-2">Mail Id</div>
+        <div class="col-2">BirthDay</div>
+        <div class="col-1">Group</div>
+        <div class="col-2"></div>
+    </div>
+
+    <app-contact-form [save]="add"></app-contact-form>
+
+    <app-msg-box *ngIf="!contacts && !errMsg" type="info">
+        <img src="assets/pw.gif" />
+    </app-msg-box>
+
+    <app-msg-box *ngIf="errMsg" type="error">
+        {{errMsg}}
+    </app-msg-box>
+
+    <ng-container *ngIf="contacts && contacts.length===0 then noContactsMsg; else contactsTable">
+    </ng-container>
+
+    <ng-template #noContactsMsg>
+        <app-msg-box type="info">
+            No Contacts To display
+        </app-msg-box>
+    </ng-template>
+
+    <ng-template #contactsTable>
+        <ng-container *ngFor="let c of contacts">
+
+            <ng-container *ngIf="isEditable(c.id) then form; else details">
+            </ng-container>
+
+            <ng-template #form>
+                <app-contact-form  [contact]="c" [save]="update" [cancelEdit]="unMarkEditable"></app-contact-form>
+            </ng-template>
+            <ng-template #details>
+                <app-contact-details [contact]="c" [del]="del" [edit]="markEditable"></app-contact-details>
+            </ng-template>
+        </ng-container>
+    </ng-template>
+</section>

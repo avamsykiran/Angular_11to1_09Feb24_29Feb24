@@ -1,0 +1,53 @@
+<div class="row p-1">
+    <div class="col">
+        <div class="alert alert-danger p-1" *ngIf="fullName.invalid && (fullName.touched || fullName.dirty)">
+            <span *ngIf="fullName.errors!['required']">Full Name is a mandatory field</span>
+            <span *ngIf="fullName.errors!['minlength']">Full Name must be atleast 4 chars in length</span>
+            <span *ngIf="fullName.errors!['maxlength']">Full Name must be atmost 25 chars in length</span>
+        </div>
+        <div class="alert alert-danger p-1" *ngIf="mobile.invalid && (mobile.touched || mobile.dirty)">
+            <span *ngIf="mobile.errors!['required']">Mobile Number is a mandatory field</span>
+            <span *ngIf="mobile.errors!['pattern']">Mobile Number must be a 10 digits number.</span>
+        </div>
+        <div class="alert alert-danger p-1" *ngIf="mailId.invalid && (mailId.touched || mailId.dirty)">
+            <span *ngIf="mailId.errors!['required']">Mail Id is a mandatory field</span>
+            <span *ngIf="mailId.errors!['email']">Invalid mail id.</span>
+        </div>
+        <div class="alert alert-danger p-1" *ngIf="dateOfBirth.invalid && (dateOfBirth.touched || dateOfBirth.dirty)">
+            <span *ngIf="dateOfBirth.errors!['required']">Date Of Birth is a mandatory field</span>
+            <span *ngIf="dateOfBirth.errors!['age']">Date Of Birth must be atleast 21 years old from today.</span>
+        </div>
+        <div class="alert alert-danger p-1" *ngIf="group.invalid && (group.touched || group.dirty)">
+            <span *ngIf="group.errors!['required']">Group is a mandatory field</span>
+        </div>
+    </div>
+</div>
+
+<form class="row border-bottom border-secondary p-1 fw-bold text-center" (ngSubmit)="formSubmitted()"
+    [formGroup]="contactForm">
+    <div class="col-1">
+        <input type="number" formControlName="id" class="form-control" readonly />
+    </div>
+    <div class="col">
+        <input type="text" formControlName="fullName" class="form-control" />
+    </div>
+    <div class="col-1">
+        <input type="text" formControlName="mobile" class="form-control" />
+    </div>
+    <div class="col-2">
+        <input type="text" formControlName="mailId" class="form-control" />
+    </div>
+    <div class="col-2">
+        <input type="date" formControlName="dateOfBirth" class="form-control" />
+    </div>
+    <div class="col-1">
+        <select formControlName="group" class="form-control">
+            <option value="">--SELECT-</option>
+            <option *ngFor="let g of ['Family','Work','Friends']" [value]="g">{{g}}</option>
+        </select>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-sm btn-primary me-1" [disabled]="contactForm.invalid">SAVE</button>
+        <button class="btn btn-sm btn-danger" type="button" (click)="cancel()">CANCEL</button>
+    </div>
+</form>
